@@ -1,0 +1,26 @@
+<h1>Add Post</h1>
+
+<!-- This is a draft for a form and the second part after the comma submit this form (the content) to our create methode at posts_controller.erb -->
+<%= form_for :post, url: posts_path do |f| %>
+	<% if @post.errors.any? %>
+		<% @post.errors.full_messages.each do |msg| %>
+			<div class="alert alert-danger">
+				<%= msg %>
+			</div>
+		<% end %>
+	<% end %>
+
+	<p>
+		<%= f.label :title %><br>
+		<%= f.text_field(:title, {:class => 'form-control'}) %>
+	</p>
+
+	<p>
+		<%= f.label :body %><br>
+		<%= f.text_field(:body, {:class => 'form-control'}) %>
+	</p>
+
+	<p>
+		<%= f.submit({:class => 'btn btn-primary'}) %>
+	</p>
+<% end %>
